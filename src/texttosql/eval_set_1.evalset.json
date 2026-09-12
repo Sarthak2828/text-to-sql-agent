@@ -1,0 +1,87 @@
+{
+  "eval_set_id": "eval_set_1",
+  "name": "eval_set_1",
+  "eval_cases": [
+    {
+      "eval_id": "What_are_the_10_longest_films",
+      "conversation": [
+        {
+          "invocation_id": "e-ea4fcef1-c41c-48fd-b740-09f29bba823e",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What are the 10 longest films?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "SELECT title, length FROM film ORDER BY length DESC LIMIT 10;"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "sql_generator_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "SELECT title, length FROM film ORDER BY length DESC LIMIT 10;"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1789195417.1198902
+        },
+        {
+          "invocation_id": "e-621c6262-2077-48bb-9657-a0513d1f64cd",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Which films have 'Documentary' in their description or belong to the Documentary category?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "SELECT DISTINCT T1.title FROM film AS T1 LEFT JOIN film_category AS T2 ON T1.film_id = T2.film_id LEFT JOIN category AS T3 ON T2.category_id = T3.category_id WHERE T1.description LIKE '%Documentary%' OR T3.name = 'Documentary';"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "sql_generator_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "SELECT DISTINCT T1.title FROM film AS T1 LEFT JOIN film_category AS T2 ON T1.film_id = T2.film_id LEFT JOIN category AS T3 ON T2.category_id = T3.category_id WHERE T1.description LIKE '%Documentary%' OR T3.name = 'Documentary';"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1789195498.2653258
+        }
+      ],
+      "session_input": {
+        "app_name": "texttosql",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1789195684.2580469
+    }
+  ],
+  "creation_timestamp": 1789195676.551918
+}
